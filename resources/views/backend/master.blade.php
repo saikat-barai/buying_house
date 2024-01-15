@@ -6,6 +6,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>BitCrypto</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+
+
+    
     <link rel="icon" href="{{ asset('backend/assets') }}/img/mini_logo.png" type="image/png">
 
     <link rel="stylesheet" href="{{ asset('backend/assets') }}/css/bootstrap1.min.css" />
@@ -40,6 +54,10 @@
 
     <link rel="stylesheet" href="{{ asset('backend/assets') }}/css/style1.css" />
     <link rel="stylesheet" href="{{ asset('backend/assets') }}/css/colors/default.css" id="colorSkinCSS">
+
+    <!-- include summernote css/js -->
+    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> --}}
 </head>
 
 <body class="crm_body_bg">
@@ -180,6 +198,27 @@
         </a>
     </div>
 
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ asset('backend/assets') }}/js/jquery1-3.4.1.min.js"></script>
 
     <script src="{{ asset('backend/assets') }}/js/popper1.min.js"></script>
@@ -238,6 +277,7 @@
 
     <script src="{{ asset('backend/assets') }}/js/dashboard_init.js"></script>
     <script src="{{ asset('backend/assets') }}/js/custom.js"></script>
+    @yield('script')
 </body>
 
 </html>

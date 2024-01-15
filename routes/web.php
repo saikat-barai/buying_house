@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,23 @@ Route::post('/login/admin', [AdminController::class, 'login_admin'])->name('logi
 
 Route::middleware('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    // category route start 
+    Route::get('/category', [CategoryController::class, 'category'])->name('category');
+    Route::post('/category/store', [CategoryController::class, 'category_store'])->name('category.store');
+    Route::get('/category/show/{id}', [CategoryController::class, 'category_show'])->name('category.show');
+    Route::post('/category/update', [CategoryController::class, 'category_update'])->name('category.update');
+    Route::get('/category.delete/{id}', [CategoryController::class, 'category_delete'])->name('category.delete');
+    // category route end
+
+
+    // produt route start 
+    Route::get('/product', [ProductController::class, 'product'])->name('product');
+    Route::get('/product/add', [ProductController::class, 'product_add'])->name('product.add');
+    Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
+    Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
+    // produt route end
+
 });
 
 

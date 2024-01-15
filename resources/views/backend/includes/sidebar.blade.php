@@ -19,50 +19,8 @@
                 </div>
             </a>
             <ul>
-                <li><a href="index_2.html">Default</a></li>
-                <li><a href="index_3.html">Light Sidebar</a></li>
-                <li><a href="index-2.html">Dark Sidebar</a></li>
+                <li><a href="index_2.html">Dashboard</a></li>
             </ul>
-        </li>
-        <li class>
-            <a href="crypto_wallet.html" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('backend/assets') }}/img/menu-icon/2.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Crypto Wallet</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="buy_sell.html" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('backend/assets') }}/img/menu-icon/3.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Buy & Sell</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="Trader_Profile.html" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('backend/assets') }}/img/menu-icon/4.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Trader Profile</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="crypto_stats.html" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('backend/assets') }}/img/menu-icon/5.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Crypto Stats</span>
-                </div>
-            </a>
         </li>
         <li class>
             <a class="has-arrow" href="#" aria-expanded="false">
@@ -70,14 +28,11 @@
                     <img src="{{ asset('backend/assets') }}/img/menu-icon/6.svg" alt>
                 </div>
                 <div class="nav_title">
-                    <span>Transactions</span>
+                    <span>Category</span>
                 </div>
             </a>
             <ul>
-                <li><a href="Request.html">Request</a></li>
-                <li><a href="tan_cancel.html">Cancel</a></li>
-                <li><a href="Refound.html">Refound</a></li>
-                <li><a href="Payment_details.html">Payment details</a></li>
+                <li><a href="{{ route('category') }}">Category</a></li>
             </ul>
         </li>
         <li class>
@@ -86,11 +41,11 @@
                     <img src="{{ asset('backend/assets') }}/img/menu-icon/7.svg" alt>
                 </div>
                 <div class="nav_title">
-                    <span>Tickers</span>
+                    <span>Product</span>
                 </div>
             </a>
             <ul>
-                <li><a href="ticker_dark.html">Ticker Dark</a></li>
+                <li><a href="{{ route('product') }}">Product</a></li>
                 <li><a href="Ticker_Light.html">Ticker Light</a></li>
             </ul>
         </li>
