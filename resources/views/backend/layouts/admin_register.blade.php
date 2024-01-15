@@ -13,29 +13,59 @@
                                     <h5 class="modal-title text_white">Register</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
                                         <div >
                                             {{-- <label class="col-form-label" for="">Your Name</label> --}}
-                                            <input type="text" class="form-control"
-                                                placeholder="Full Name" name="name">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" name="name">
+                                            @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    <br>
+                                            @enderror
                                         </div>
                                         <div >
-                                            <input type="number" class="form-control"
+                                            <input type="number" class="form-control @error('number') is-invalid @enderror"
                                                 placeholder="Enter your number" name="number">
+                                                @error('number')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
                                         </div>
                                         <div >
-                                            <input type="email" class="form-control"
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Enter your email" name="email">
+                                                @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
                                         </div>
                                         <div >
-                                            <input type="password" class="form-control"
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" name="password">
+                                                @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
                                         </div>
-                                        <div >
-                                            <input type="password" class="form-control"
-                                                placeholder="Confirm password">
-                                        </div>
-                                        <a href="#" class="btn_1 full_width text-center"> Sign Up</a>
+                                        {{-- <div >
+                                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                placeholder="Confirm password" name="password_confirmation">
+                                                @error('password_confirmation')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
+                                        </div> --}}
+                                        <button type="submit"  class="btn_1 full_width text-center"> Sign Up</button>
                                         <p>Already have an account? 
                                             <a  href="{{ route('admin.login') }}">Sign in</a>
                                         </p>

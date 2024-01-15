@@ -24,7 +24,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/register', [AdminController::class, 'admin_register'])->name('admin.register');
+Route::post('/admin/store', [AdminController::class, 'admin_store'])->name('admin.store');
 Route::get('/admin/login', [AdminController::class, 'admin_login'])->name('admin.login');
+Route::post('/login/admin', [AdminController::class, 'login_admin'])->name('login.admin');
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+
+Route::middleware('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});
+
 

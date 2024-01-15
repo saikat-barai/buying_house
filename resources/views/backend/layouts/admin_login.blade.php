@@ -13,16 +13,29 @@
                                     <h5 class="modal-title text_white">Login</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="{{ route('login.admin') }}" method="POST">
+                                        @csrf
                                         <div >
-                                            <input type="email" class="form-control"
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Enter your email" name="email">
+                                                @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
                                         </div>
                                         <div >
-                                            <input type="password" class="form-control"
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" name="password">
+                                                @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        <br>
+                                                @enderror
                                         </div>
-                                        <a href="#" class="btn_1 full_width text-center"> Sign in</a>
+                                        <button type="submit"  class="btn_1 full_width text-center"> Sign in</button>
                                         <p>Need an account?
                                              <a href="{{ route('admin.register') }}">Sign Up</a>
                                         </p>
