@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/register', [AdminController::class, 'admin_register'])->name('admin.register');
 Route::post('/admin/store', [AdminController::class, 'admin_store'])->name('admin.store');
@@ -55,5 +57,15 @@ Route::middleware('admin')->group(function () {
     // produt route end
 
 });
+
+
+
+// frontend route start 
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/service', [FrontendController::class, 'service'])->name('service');
+Route::get('/products', [FrontendController::class, 'products'])->name('products');
+Route::get('/mission/and/vission', [FrontendController::class, 'mission_and_vission'])->name('mission.and.vission');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 
 
