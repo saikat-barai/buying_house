@@ -49,6 +49,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/product/add', [ProductController::class, 'product_add'])->name('product.add');
     Route::post('/getcategory', [ProductController::class, 'getcategory'])->name('getcategory');
     Route::post('/product/store', [ProductController::class, 'product_store'])->name('product.store');
+    Route::get('/product/show/{id}', [ProductController::class, 'product_show'])->name('product.show');
+    Route::get('/product/delete/{id}', [ProductController::class, 'product_delete'])->name('product.delete');
+    Route::post('/product/update', [ProductController::class, 'product_update'])->name('product.update');
     // produt route end
 
 });

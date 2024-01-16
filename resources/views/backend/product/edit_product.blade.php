@@ -20,15 +20,16 @@
                             </div>
                         </div>
                         <div class="white_card_body">
-                            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('product.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
                                     <div class="col-lg-6">
                                         <label class="form-label">Parent Category</label>
                                         <select class="form-control wide mb_20 parentcategory @error('parentcategory') is-invalid @enderror" name="parent_category_id" >
-                                            <option value="">Choise One</option>
+                                            <option disabled value="">Choise One</option>
                                             @foreach ($parent_categories as $parent_category)
-                                            <option value="{{ $parent_category->id }}">{{ $parent_category->category_name }}</option>
+                                            <option  value="{{ $parent_category->id }}" {{ $parent_category->id == $product->parent_category_id ? 'selected' : '' }}>{{ $parent_category->category_name }}</option>
                                             @endforeach
                                         </select>
                                         @error('parentcategory')
@@ -44,7 +45,7 @@
                                     <div class="col-lg-12">
                                         <label class="form-label">Title</label>
                                         <div class="common_input mb_20">
-                                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="" name="title">
+                                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="" name="title" value="{{ $product->title }}">
                                             @error('title')
                                             <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                                             @enderror
@@ -54,11 +55,8 @@
                                         <label class="form-label">Image</label>
                                         <div class="input-group mb-3">
                                             <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                            <input type="file" class="form-control @error('images') is-invalid @enderror" id="inputGroupFile01" multiple name="images[]" >
+                                            <input type="file" class="form-control " id="inputGroupFile01" multiple name="images[]" >
                                             </div>
-                                            @error('images')
-                                            <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
-                                            @enderror
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="form-label">Status</label>
@@ -69,11 +67,11 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="form-label">Description</label>
-                                        <textarea id="summernote" name="description"></textarea>
+                                        <textarea id="summernote" name="description">{!! $product->description !!}</textarea>
                                     </div>
                                     <div class="col-12">
                                         <div class="create_report_btn mt_30">
-                                        <button type="submit" class="btn_1 w-100">Add Product</a>
+                                        <button type="submit" class="btn_1 w-100">Update Product</a>
                                         </div>
                                     </div>
                                     

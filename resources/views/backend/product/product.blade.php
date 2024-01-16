@@ -37,13 +37,22 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @foreach ($categories as $category)
+                                <tbody>
+                                    @foreach ($products as $product)
                                     <tr>
-                                        <th scope="row"> <a href="#" class="question_content">{{ $category->parent_category_id }}</a></th>
-                                        <td>{{ $category->category_name }}</td>
                                         <td>
-                                            <span class="badge {{ $category->status == 'active' ? 'bg-success' : 'bg-danger' }} ">{{ $category->status }}</span>
+                                            {{-- @php
+                                                $images = DB::table('product_images')->where('product_id', $product->id)->get();
+                                            @endphp --}}
+                                            {{-- {{ $images }} --}}
+                                            @foreach ($product->thumbnail as $image)
+                                            <img class="" width="50" height="50" src="{{ asset('images/product/' . $image->images) }}" alt="">
+                                            @endforeach
+                                        </td>
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->parent_category->category_name }} / {{ $product->category? $product->category->category_name : '' }}</td>
+                                        <td>
+                                            <span class="badge {{ $product->status == 'active' ? 'bg-success' : 'bg-danger' }} ">{{ $product->status }}</span>
                                         </td>
                                         <td>
                                             <div class="header_more_tool">
@@ -58,10 +67,9 @@
                                                         aria-labelledby="dropdownMenuButton"
                                                         x-placement="bottom-end"
                                                         style="position: absolute; transform: translate3d(-148px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        <button class="dropdown-item editbtn editcategory" id="edit" data-id="{{ $category->id }}" data-bs-toggle="modal"
-                                                        data-bs-target="#editcategory"> <i
-                                                                class="ti-eye"></i> View</button>
-                                                        <a class="dropdown-item" href="{{ route('category.delete', ['id'=>$category->id]) }}"> <i
+                                                        <a href="{{ route('product.show', ['id'=>$product->id]) }}" class="dropdown-item " id="edit"> <i
+                                                                class="ti-eye"></i> View</a>
+                                                        <a class="dropdown-item" href="{{ route('product.delete', ['id'=>$product->id]) }}"> <i
                                                                 class="ti-trash"></i> Delete</a>
                                                     </div>
                                                 </div>
@@ -69,7 +77,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                </tbody> --}}
+                                </tbody>
                             </table>
                         </div>
                     </div>
