@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,5 +68,10 @@ Route::get('/service', [FrontendController::class, 'service'])->name('service');
 Route::get('/products', [FrontendController::class, 'products'])->name('products');
 Route::get('/mission/and/vission', [FrontendController::class, 'mission_and_vission'])->name('mission.and.vission');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/product/details/{id}', [FrontendController::class, 'product_details'])->name('product.details');
+Route::get('/categories/product/{id}', [FrontendController::class, 'categories_product'])->name('categories.product');
 
+
+// frontend contact message route start 
+Route::post('/contact/message/store' , [ContactController::class, 'contact_message_store'])->name('contact.message.store');
 

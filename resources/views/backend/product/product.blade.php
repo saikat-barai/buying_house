@@ -41,10 +41,6 @@
                                     @foreach ($products as $product)
                                     <tr>
                                         <td>
-                                            {{-- @php
-                                                $images = DB::table('product_images')->where('product_id', $product->id)->get();
-                                            @endphp --}}
-                                            {{-- {{ $images }} --}}
                                             @foreach ($product->thumbnail as $image)
                                             <img class="" width="50" height="50" src="{{ asset('images/product/' . $image->images) }}" alt="">
                                             @endforeach
